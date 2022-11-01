@@ -9,15 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var clickButton: UIButton!
-    @IBOutlet weak var numberOfClicks: UILabel!
+    @IBOutlet private var clickButton: UIButton!
+    @IBOutlet weak var clicksCountLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set value of Label to 0
-        numberOfClicks.text = "0"
+        clicksCountLabel.text = "Значение счётчика: \n0"
         
         // Rounded buttons
         clickButton.layer.cornerRadius = 25
@@ -27,16 +27,20 @@ class ViewController: UIViewController {
     }
     var num : Int = 0
     
-    @IBAction func buttonDidTap(_ sender: Any) {
+    @IBAction func clickButtonDidTap(_ sender: Any) {
          num += 1
-        numberOfClicks.text = "\(num)"
+        clicksCountLabel.text = "Значение счётчика: \n\(num)"
     }
     
     
     @IBAction func resetButtonDidTap(_ sender: Any) {
-        num = 0
-        numberOfClicks.text = "\(num)"
+        resetCountLabel()
     }
     
+    
+    func resetCountLabel(){
+        num = 0
+        clicksCountLabel.text = "Значение счётчика: \n\(num)"
+    }
 }
 
